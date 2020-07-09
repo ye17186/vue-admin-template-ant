@@ -1,19 +1,17 @@
 <template>
   <div class="i-layout-user">
-    <a-layout>
-      <a-layout-header class="user-header">
-        <a>
-          <img style="height: 40px; width: 40px;" src="../../assets/image/logo/wx_logo.jpg" alt="用户头像"/>
-          <span class="title">Ant Design</span>
-        </a>
-      </a-layout-header>
-      <a-layout-content>
-        <router-view></router-view>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center;">
-        <div class="copyright">Copyright &copy; 2020 IT小跟班</div>
-      </a-layout-footer>
-    </a-layout>
+    <header class="header">
+      <a>
+        <img src="../../assets/image/logo/wx_logo.jpg" alt="用户头像"/>
+        <span class="title">Ant Design</span>
+      </a>
+    </header>
+    <main class="main">
+      <router-view></router-view>
+    </main>
+    <footer class="footer">
+      <div class="copyright">Copyright &copy; 2020 IT小跟班</div>
+    </footer>
   </div>
 </template>
 
@@ -23,20 +21,24 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   @h-user-header: 180px;
   .i-layout-user {
-    height: 100vh;
     width: 100%;
-    padding: 0 calc(100vh - 350px);
+    height: 100%;
+    padding: 0 260px;
     background: #f0f2f5 url(../../assets/image/bg/background.svg) no-repeat 50%;
-    .user-header {
+    header, main, footer {
+      background-color: #f0f2f5;
+    }
+    .header {
       text-align: center;
       height: @h-user-header;
-      line-height: @h-user-header;
       a {
         display: inline-block;
         img {
+          height: 40px;
+          width: 40px;
           position: relative;
           top: -8px;
           margin-right: 20px;
@@ -52,12 +54,14 @@ export default {
         }
       }
     }
-    .ant-layout-header {
-      background-color: #f0f2f5;
-    }
-    .copyright {
-      color: rgba(0, 0, 0, 0.45);
-      font-size: 14px;
+    .footer {
+      text-align: center;
+      height: 100px;
+      line-height: 100px;
+      .copyright {
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 14px;
+      }
     }
   }
 </style>
