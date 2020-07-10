@@ -1,5 +1,5 @@
 const RouterTable = {
-  UserLayout: () => import('../components/layout/ILayoutUser'),
+  UserLayout: () => import('../views/user/IUserLayout'),
   Login: () => import('../views/user/Login'),
   Lock: () => import('../views/lock/Lock'),
   E404: () => import('../views/error/Page404'),

@@ -89,7 +89,7 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/image/bg/lock.png");
+    background-image: url("../../assets/image/bg/background.png");
     background-size: cover;
   }
 

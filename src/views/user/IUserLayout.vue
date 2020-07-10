@@ -1,16 +1,16 @@
 <template>
-  <div class="i-layout-user">
-    <header class="header">
-      <a>
+  <div class="i-user-layout">
+    <header>
+      <a href="https://blog.it-follower.com" target="_blank">
         <img src="../../assets/image/logo/wx_logo.jpg" alt="用户头像"/>
-        <span class="title">Ant Design</span>
+        <span class="title">Design With Ant</span>
       </a>
     </header>
-    <main class="main">
+    <main>
       <router-view></router-view>
     </main>
-    <footer class="footer">
-      <div class="copyright">Copyright &copy; 2020 IT小跟班</div>
+    <footer>
+      Copyright &copy; 2020 IT小跟班
     </footer>
   </div>
 </template>
@@ -23,19 +23,19 @@ export default {
 
 <style lang="less" scoped>
   @h-user-header: 180px;
-  .i-layout-user {
+  .i-user-layout {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    padding: 0 260px;
-    background: #f0f2f5 url(../../assets/image/bg/background.svg) no-repeat 50%;
-    header, main, footer {
-      background-color: #f0f2f5;
-    }
-    .header {
+    background: url(../../assets/image/bg/background.png);
+    background-size: cover;
+    header {
       text-align: center;
       height: @h-user-header;
       a {
-        display: inline-block;
         img {
           height: 40px;
           width: 40px;
@@ -54,7 +54,9 @@ export default {
         }
       }
     }
-    .footer {
+    main {
+    }
+    footer {
       text-align: center;
       height: 100px;
       line-height: 100px;
