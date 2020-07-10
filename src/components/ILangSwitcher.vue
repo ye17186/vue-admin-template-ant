@@ -1,6 +1,6 @@
 <template>
   <a-dropdown style="cursor: pointer;">
-    <i-icon type="i-icon-zhongyingwen" :icon-size="iconSize"></i-icon>
+    <i-icon type="i-icon-zhongyingwen" style="font-size: 28px;"></i-icon>
     <a-menu slot="overlay" @click="handleClick">
       <a-menu-item :disabled="lang === 'zh-CN'" key="zh-CN">中文</a-menu-item>
       <a-menu-item :disabled="lang === 'en'" key="en">English</a-menu-item>

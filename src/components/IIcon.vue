@@ -1,35 +1,20 @@
 <template>
-  <span>
-    <i :class="font + ' ' + type" :style="style"></i>
-    <span v-if="title" :style="{'margin-left': span + 'px'}">{{ title }}</span>
-  </span>
+  <i :class="font + ' ' + type">
+    <span v-if="title">{{ title }}</span>
+    <slot v-else></slot>
+  </i>
 </template>
 
 <script>
 export default {
   name: 'IIcon',
   props: {
+    type: String,
     font: {
       type: String,
       default: 'iconfont'
     },
-    type: String,
-    title: String,
-    span: {
-      type: Number,
-      default: 5
-    },
-    iconSize: {
-      type: Number,
-      default: 16
-    }
-  },
-  data () {
-    return {
-      style: {
-        'font-size': this.iconSize + 'px'
-      }
-    }
+    title: String
   }
 }
 </script>
@@ -40,10 +25,24 @@ export default {
     max-width: 0;
     opacity: 0;
   }
-  .ant-menu-inline-collapsed .ant-menu-item i + span {
+  .ant-menu-item i  {
+    font-size: 14px;
+    > span {
+      margin-left: 5px;
+      transition: width .3s, opacity .3s;
+    }
+  }
+  .ant-menu-submenu i  {
+    font-size: 14px;
+    > span {
+      margin-left: 5px;
+      transition: width .3s, opacity .3s;
+    }
+  }
+  .ant-menu-inline-collapsed .ant-menu-item i > span {
     .collapsed-style
   }
-  .ant-menu-inline-collapsed .ant-menu-submenu i + span {
+  .ant-menu-inline-collapsed .ant-menu-submenu i > span {
     .collapsed-style
   }
 </style>

@@ -2,7 +2,7 @@
   <span>
     <a-tooltip style="cursor: pointer;">
       <span slot="title">{{ $t('headerBar.lock.tip') }}</span>
-      <i-icon type="i-icon-lock" :icon-size="iconSize" @click.native="visible = true"></i-icon>
+      <i-icon type="i-icon-lock" style="font-size: 28px;" @click.native="visible = true"></i-icon>
     </a-tooltip>
 
     <a-modal :visible="visible" title="设置锁屏密码" @ok="handleOk" @cancel="handleCancel">
@@ -19,12 +19,6 @@ import RouteUtils from '../../plugins/utils/RouteUtils'
 export default {
   name: 'ILayoutRightHeaderBarLock',
   components: { IIcon },
-  props: {
-    iconSize: {
-      type: Number,
-      default: 16
-    }
-  },
   data () {
     return {
       visible: false,

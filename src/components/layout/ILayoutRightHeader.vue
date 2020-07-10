@@ -5,8 +5,8 @@
       <li><i-layout-right-header-bar-breadcrumb></i-layout-right-header-bar-breadcrumb></li>
     </ul>
     <ul class="i-right-bar">
-      <li><i-layout-right-header-bar-lock :icon-size="28"></i-layout-right-header-bar-lock></li>
-      <li><i-lang-switcher :icon-size="28"></i-lang-switcher></li>
+      <li><i-layout-right-header-bar-lock></i-layout-right-header-bar-lock></li>
+      <li><i-lang-switcher></i-lang-switcher></li>
       <li style="padding: 0 10px 0 5px;"><i-layout-right-header-bar-user style="cursor: pointer; margin-right: 10px;"></i-layout-right-header-bar-user></li>
     </ul>
   </a-layout-header>
