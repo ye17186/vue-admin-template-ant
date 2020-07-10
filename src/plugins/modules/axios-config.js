@@ -1,5 +1,5 @@
 import axios from 'axios'
-import CacheUtils from './utils/CacheUtils'
+import CacheUtils from '../utils/CacheUtils'
 
 // 请求地址
 axios.defaults.baseURL = process.env.VUE_APP_API_URL

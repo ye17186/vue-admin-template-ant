@@ -75,10 +75,10 @@ export default {
     return {
       activeTab: 'E',
       request: {
-        mobile: '',
-        sms: '',
-        email: '',
-        password: ''
+        email: 'ye001@163.com',
+        password: '123456',
+        mobile: '13200000001',
+        sms: ''
       },
       loading: false,
       errors: {
@@ -91,13 +91,15 @@ export default {
       },
       rules: {
         email: [
-          { required: true, message: this.$i18n.t('login.tab1.emailEmpty') }
+          { required: true, message: this.$i18n.t('login.tab1.emailEmpty') },
+          { type: 'email', message: this.$i18n.t('login.tab1.emailInvalid') }
         ],
         password: [
           { required: true, message: this.$i18n.t('login.tab1.passwordEmpty') }
         ],
         mobile: [
-          { required: true, message: this.$i18n.t('login.tab2.mobileEmpty') }
+          { required: true, message: this.$i18n.t('login.tab2.mobileEmpty') },
+          { validator: this.$validator.mobile, message: this.$i18n.t('login.tab2.mobileInvalid') }
         ],
         sms: [
           { required: true, message: this.$i18n.t('login.tab2.smsEmpty') }

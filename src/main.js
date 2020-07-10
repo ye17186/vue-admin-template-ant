@@ -2,25 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './plugins/ant-design-vue.js'
-import './plugins/axios-config'
-import api from './config/api/index'
+import './plugins'
+
 import i18n from './assets/i18n/i18n'
 import NProgress from 'nprogress'
-
 import 'nprogress/nprogress.css'
-import 'animate.css'
 
 import CacheUtils from './plugins/utils/CacheUtils'
 import RouteUtils from './plugins/utils/RouteUtils'
 
 NProgress.configure({ showSpinner: false })
-Vue.prototype.$API = api
 Vue.config.productionTip = false
-
-if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'preview') {
-  require('./mock')
-}
 
 const calcTitle = function (to) {
   if (to.meta.titles) {

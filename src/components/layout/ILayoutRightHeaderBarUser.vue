@@ -6,7 +6,7 @@
     </span>
     <a-menu slot="overlay" size="small">
       <a-menu-item>
-        <i-icon type="i-icon-logout" title="安全退出"></i-icon>
+        <i-icon type="i-icon-logout" title="安全退出" @click.native="handleLogout"></i-icon>
       </a-menu-item>
     </a-menu>
   </a-dropdown>
@@ -14,9 +14,17 @@
 
 <script>
 import IIcon from '../IIcon'
+import CacheUtils from '../../plugins/utils/CacheUtils'
 export default {
   name: 'ILayoutRightHeaderBarUser',
-  components: { IIcon }
+  components: { IIcon },
+  methods: {
+    handleLogout: function () {
+      // 清空缓存
+      CacheUtils.clearAll()
+      window.location.reload()
+    }
+  }
 }
 </script>
 
