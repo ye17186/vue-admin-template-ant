@@ -26,7 +26,7 @@
             </a-input>
           </a-form-model-item>
           <a-row :gutter="16">
-            <a-col class="gutter-row" :span="16">
+            <a-col :span="16">
               <a-form-model-item prop="sms">
                 <a-input type="password" :placeholder="$t('login.tab2.smsPlaceholder')" size="large"
                          v-model="request.sms">
@@ -34,11 +34,9 @@
                 </a-input>
               </a-form-model-item>
             </a-col>
-            <a-col class="gutter-row" :span="8">
+            <a-col :span="8">
               <a-form-model-item>
-                <a-button class="smsSendBtn" :disabled="smsSendBtn.disabled" @click="doSendSms">
-                  {{ !smsSendBtn.disabled && '获取验证码' || smsSendBtn.time + 's' }}
-                </a-button>
+                <i-sms-send-button class="smsSendBtn" @success="handleSmsSuccess"></i-sms-send-button>
               </a-form-model-item>
             </a-col>
           </a-row>
@@ -54,7 +52,11 @@
         <span>其他登录方式</span>
         <a><i-icon class="item-icon" type="i-icon-alipay" :icon-size="24"></i-icon></a>
         <a><i-icon class="item-icon" type="i-icon-wechat-fill" :icon-size="24"></i-icon></a>
-        <router-link class="user-register-link" :to="{ path: 'register' }">注册账户</router-link>
+        <span class="user-options" >
+          <router-link :to="{ path: 'register' }">找回密码</router-link>
+          <span style="margin: 0 8px;">|</span>
+          <router-link :to="{ path: 'register' }">注册账号</router-link>
+        </span>
       </div>
     </a-form-model>
   </div>
@@ -68,9 +70,10 @@ import HttpUtils from '../../plugins/utils/HttpUtils'
 import CacheUtils from '../../plugins/utils/CacheUtils'
 import RouteUtils from '../../plugins/utils/RouteUtils'
 import MenuUtils from '../../plugins/utils/MenuUtils'
+import ISmsSendButton from '../../components/ISmsSendButton'
 export default {
   name: 'Login',
-  components: { IIcon, ILangSwitcher },
+  components: { ISmsSendButton, IIcon, ILangSwitcher },
   data () {
     return {
       activeTab: 'E',
@@ -80,6 +83,7 @@ export default {
         mobile: '13200000001',
         sms: ''
       },
+      smsCode: '',
       loading: false,
       errors: {
         e: '',
@@ -108,16 +112,8 @@ export default {
     }
   },
   methods: {
-    doSendSms: function () {
-      this.smsSendBtn.disabled = true
-      const _this = this
-      const interval = window.setInterval(() => {
-        if (_this.smsSendBtn.time-- <= 0) {
-          _this.smsSendBtn.time = 15
-          _this.smsSendBtn.disabled = false
-          window.clearInterval(interval)
-        }
-      }, 1000)
+    handleSmsSuccess: function (smsCode) {
+      this.smsCode = smsCode
     },
     doLogin: function () {
       this.errors.e = ''
@@ -132,7 +128,8 @@ export default {
         } : {
           loginType: this.activeTab,
           mobile: _request.mobile,
-          sms: _request.sms
+          sms: _request.sms,
+          smsCode: this.smsCode
         }
         HttpUtils.post(this.$API.user.login, param).then(res => {
           // 缓存用户信息
@@ -159,7 +156,7 @@ export default {
 <style lang="less" scoped>
   .i-user-login {
     .login-form {
-      width: 328px;
+      width: 368px;
       margin: 0 auto;
     }
     .smsSendBtn {
@@ -188,7 +185,7 @@ export default {
           color: @primary-color;
         }
       }
-      .user-register-link {
+      .user-options {
         float: right;
       }
     }

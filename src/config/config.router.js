@@ -1,6 +1,8 @@
 const RouterTable = {
   UserLayout: () => import('../views/user/IUserLayout'),
   Login: () => import('../views/user/Login'),
+  Register: () => import('../views/user/Register'),
+  RegisterResult: () => import('../views/user/RegisterResult'),
   Lock: () => import('../views/lock/Lock'),
   E404: () => import('../views/error/Page404'),
   Layout: () => import('../components/layout/ILayout'),
@@ -24,13 +26,22 @@ export const staticRouters = [
     component: RouterTable.UserLayout,
     children: [
       {
+        name: 'Login',
         path: 'login',
         component: RouterTable.Login
+      }, {
+        name: 'Register',
+        path: 'register',
+        component: RouterTable.Register
+      }, {
+        name: 'RegisterResult',
+        path: 'register/result',
+        component: RouterTable.RegisterResult
       }
     ]
   },
-  { path: '/lock', component: RouterTable.Lock },
-  { path: '/*', component: RouterTable.E404 }
+  { name: 'Lock', path: '/lock', component: RouterTable.Lock },
+  { name: '404', path: '/*', component: RouterTable.E404 }
 ]
 
 /**

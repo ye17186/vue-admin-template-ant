@@ -38,7 +38,7 @@ reload()
 // 页面路由前处理
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (to.path === '/login' || to.path === '/lock') {
+  if (RouteUtils.isStatic(to)) {
     next()
   } else if (RouteUtils.isLocked()) {
     next({ path: '/lock' })

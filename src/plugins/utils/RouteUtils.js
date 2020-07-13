@@ -9,7 +9,7 @@ export default {
     return new VueRouter({ routes: staticRouters })
   },
   isStatic: (to) => {
-    const staticPaths = ['/404', '/login', '/lock']
+    const staticPaths = ['/404', '/login', '/lock', '/register', '/register/result']
     return staticPaths.includes(to.path)
   },
   isLocked: () => {
